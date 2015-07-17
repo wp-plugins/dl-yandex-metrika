@@ -33,9 +33,7 @@
 	</table>
 	
 
-	<p class="submit">
-		<input type="submit" class="button-primary" value="Завершить настройку" />
-	</p>
+	<?php submit_button(); ?>
 
 	
 	<input 
