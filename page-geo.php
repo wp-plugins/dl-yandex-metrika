@@ -17,7 +17,6 @@ function drawRegionsMap() {
 
 var data = google.visualization.arrayToDataTable([
   ['Страны', 'Визиты'],
-  ['Germany', 200],
 <?php
 foreach($data_geo[data] as $key => $value) { 
 	
