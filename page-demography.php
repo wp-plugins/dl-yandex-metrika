@@ -29,7 +29,9 @@ foreach($json_data[data_gender] as $key => $value) {
         ]);
 
       var options = {
-        pieStartAngle: 100,
+		title: 'Пол посетителей',
+        pieHole: 0.4,  
+		height: 400,
       };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -56,7 +58,9 @@ foreach($json_data[data] as $key => $value) {
         ]);
 
       var options = {
-        pieStartAngle: 100,
+		title: 'Возрастная группа',
+        pieHole: 0.4,  
+		height: 400,
       };
 
         var chart = new google.visualization.PieChart(document.getElementById('datachart'));
@@ -72,8 +76,8 @@ foreach($json_data[data] as $key => $value) {
 			
                 <div class="postbox" id="first">
                     <div class="inside">
-						<div id="piechart" style="width: 50%; height: 550px; float: left;"></div>
-						<div id="datachart" style="width: 50%; height: 550px;float: left;"></div>
+						<div id="piechart" style="width: 50%; float: left;"></div>
+						<div id="datachart" style="width: 50%; float: left;"></div>
 						<div style="clear: both"></div>
                     </div>
                 </div>
