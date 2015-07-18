@@ -4,7 +4,7 @@ Plugin URI: http://vcad.dd-l.name/wp-plugins/
 Tags: dl, robots, robots.txt, seo
 Requires at least: 3.2
 Tested up to: 4.2.2
-Stable tag: 0.1
+Stable tag: 0.2
 
 Яндекс.Метрика для вашей консоли WordPress
 
@@ -21,6 +21,9 @@ Stable tag: 0.1
 3. Активируйте плагин в разделе плагины в панели администрирования WordPress
 
 == Changelog ==
+
+= 0.2 =
+* add page geo
 
 = 0.1.1 =
 * add page traffic
