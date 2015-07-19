@@ -103,20 +103,20 @@ function dl_yandex_metrika_deactivate(){
 }
 
 
+add_action( 'admin_enqueue_scripts', 'dl_yandex_metrika_admin_load_scripts' );
 function dl_yandex_metrika_admin_load_scripts() {
     wp_enqueue_script( 'my_custom_script', 'https://www.google.com/jsapi' );
 }
-add_action( 'admin_enqueue_scripts', 'dl_yandex_metrika_admin_load_scripts' );
 
 
 function dl_select_options_counters() {
 	$url_counters = file_get_contents('https://api-metrika.yandex.ru/counters.json?oauth_token='.get_option('dl_yandex_metrika_token'));
-	$counters = json_decode($url_counters, true);
+	$json_data = json_decode($url_counters, true);
 	echo '<select name="dl_yandex_metrika_id">';
 	
-	foreach($counters[counters] as $key => $value) { 
-		$site_name = $counters[counters][$key][site];
-		$site_id = $counters[counters][$key][id];
+	foreach($json_data[counters] as $key => $value) { 
+		$site_name = $json_data[counters][$key][site];
+		$site_id = $json_data[counters][$key][id];
 		?>
 		<option  
 			<?php if ( get_option('dl_yandex_metrika_id') == $site_id ) echo 'selected="selected"'; ?>  

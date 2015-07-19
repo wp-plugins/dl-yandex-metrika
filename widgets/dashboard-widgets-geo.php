@@ -13,8 +13,8 @@ function geo_dashboard_widget_function() {
 	$dl_token = get_option('dl_yandex_metrika_token');
 
 	$url = 'https://api-metrika.yandex.ru/stat/geo.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token;
-	$data_geo = file_get_contents($url);
-	$data_geo = json_decode($data_geo, true);
+	$json_data = file_get_contents($url);
+	$json_data = json_decode($json_data, true);
 	
 	echo '<style>
 			.column {
@@ -31,8 +31,8 @@ function geo_dashboard_widget_function() {
 		</style>';
 	
 	echo '<ul class="column">';
-	foreach($data_geo[data] as $key => $value) { 
-		echo '<li><strong>'. $data_geo[data][$key][name] .'</strong> - '.$data_geo[data][$key][visits];
+	foreach($json_data[data] as $key => $value) { 
+		echo '<li><strong>'. $json_data[data][$key][name] .'</strong> - '.$json_data[data][$key][visits];
 	}
 	echo '</ul>';
 } 

@@ -4,11 +4,11 @@ $dl_token = get_option('dl_yandex_metrika_token');
 $date = date('Ymd',strtotime("-1 month"));
 
 $url = 'https://api-metrika.yandex.ru/stat/traffic/summary.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date;
-$data_traffic = file_get_contents($url);
-$data_traffic = json_decode($data_traffic, true);
+$json_data = file_get_contents($url);
+$json_data = json_decode($json_data, true);
 ?>
 <div class="wrap">
-<h2>Отчет Посещаемость</h2>
+<h2>Отчет Посещаемость <a href="https://metrika.yandex.ru/stat/traffic?id=<?php echo $dl_metrika_id; ?>" target="_blank" style="float: right" class="button">Отчет на Yandex.Metrika</a></h2>
 <script type="text/javascript">
       google.load("visualization", "1.1", {packages:["bar"]});
       google.setOnLoadCallback(drawChart);
@@ -16,12 +16,12 @@ $data_traffic = json_decode($data_traffic, true);
         var data = google.visualization.arrayToDataTable([
           ['', 'Визиты', 'Просмотры', 'Посетители'],
 <?php
-foreach($data_traffic[data] as $key => $value) { 
+foreach($json_data[data] as $key => $value) { 
 	
-	$date = date('d.m',strtotime($data_traffic[data][$key][date]));
-	$visites = $data_traffic[data][$key][visits];
-	$page_views = $data_traffic[data][$key][page_views];
-	$visitors = $data_traffic[data][$key][visitors];
+	$date = date('d.m',strtotime($json_data[data][$key][date]));
+	$visites = $json_data[data][$key][visits];
+	$page_views = $json_data[data][$key][page_views];
+	$visitors = $json_data[data][$key][visitors];
 	
 	echo '[\''. $date .'\','.$visites.','.$page_views.','.$visitors.'],';
 
@@ -72,17 +72,17 @@ foreach($data_traffic[data] as $key => $value) {
 <tbody>
 <?php
 
-$data_traffic = array_reverse($data_traffic[data]);
+$json_data = array_reverse($json_data[data]);
 
-foreach($data_traffic as $key => $value) { 
-	$traffic_date 			= $data_traffic[$key][date];
-	$traffic_visits 		= $data_traffic[$key][visits];
-	$traffic_page_views		= $data_traffic[$key][page_views];
-	$traffic_visitors		= $data_traffic[$key][visitors];
-	$traffic_depth			= $data_traffic[$key][depth];
-	$traffic_new_visitors	= $data_traffic[$key][new_visitors];
-	$traffic_denial			= $data_traffic[$key][denial];
-	$traffic_visit_time		= $data_traffic[$key][visit_time];
+foreach($json_data as $key => $value) { 
+	$traffic_date 			= $json_data[$key][date];
+	$traffic_visits 		= $json_data[$key][visits];
+	$traffic_page_views		= $json_data[$key][page_views];
+	$traffic_visitors		= $json_data[$key][visitors];
+	$traffic_depth			= $json_data[$key][depth];
+	$traffic_new_visitors	= $json_data[$key][new_visitors];
+	$traffic_denial			= $json_data[$key][denial];
+	$traffic_visit_time		= $json_data[$key][visit_time];
 	
 	$traffic_visit_time		= $traffic_visit_time/60;
 ?>  
@@ -108,7 +108,7 @@ foreach($data_traffic as $key => $value) {
                     <div class="inside">
 						<?php if(get_option('dl_yandex_metrika_developer_url') <> '') { ?>
 						<a href="<?php echo $url.'&pretty=1'; ?>" target="_blank"><?php echo $url; ?></a><?php } ?>						
-                        <pre><?php print_r($data_traffic); ?></pre>
+                        <pre><?php print_r($json_data); ?></pre>
                     </div>
                 </div>
 				<?php } ?>

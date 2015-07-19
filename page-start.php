@@ -94,3 +94,6 @@ foreach($data_traffic[data] as $key => $value) {
         </div>
     </div>
 </div>
+
+<?php
+	json_data('','-1 month');
