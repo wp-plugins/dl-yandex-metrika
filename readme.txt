@@ -1,7 +1,7 @@
 === DL Yandex Metrika ===
 Contributors: dyadyalesha
 Plugin URI: http://vcad.dd-l.name/wp-plugins/
-Tags: dl, robots, robots.txt, seo
+Tags: dl, yandex, metrika, yandex metrika, seo
 Requires at least: 3.2
 Tested up to: 4.2.2
 Stable tag: 0.2.1
