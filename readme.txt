@@ -23,6 +23,9 @@ Stable tag: 0.2.1
 3. Активируйте плагин в разделе плагины в панели администрирования WordPress
 
 == Changelog ==
+= 0.2.2 =
+* add dashboard widgets traffic
+* add dashboard widgets geo
 
 = 0.2.1 =
 * add page demography
