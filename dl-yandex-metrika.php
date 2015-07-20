@@ -137,6 +137,7 @@ function dl_select_options_counters() {
 	echo '</select>';
 }
 
-
-require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-traffic.php');
-require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-geo.php' );
+if(get_option('dl_yandex_metrika_id') <> '') {
+	require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-traffic.php');
+	require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-geo.php' );
+}
