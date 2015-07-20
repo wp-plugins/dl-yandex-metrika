@@ -27,7 +27,7 @@ function traffic_dashboard_widget_function() {
           [' ', ' '],
 <?php
 foreach($json_data as $key => $value) { 
-$data = date('Y.m.d',strtotime($json_data[$key][date]));
+$data = date('m.d',strtotime($json_data[$key][date]));
 echo '["'.$data.'", '.$json_data[$key][visits].'],';
 } ?>
         ]);
