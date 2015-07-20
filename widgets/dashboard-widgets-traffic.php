@@ -33,7 +33,7 @@ echo '["'.$data.'", '.$json_data[$key][visits].'],';
         ]);
 
         var options = {
-			
+			legend: { position: "none" }
 		};
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));

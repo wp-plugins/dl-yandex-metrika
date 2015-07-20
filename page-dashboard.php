@@ -26,7 +26,9 @@ foreach($data_traffic[data] as $key => $value) {
 ?>
         ]);
 
-        var options = {};
+        var options = {
+			legend: { position: "none" }
+		};
 
         var chart = new google.visualization.AreaChart(document.getElementById('visites_div'));
         chart.draw(data, options);
@@ -51,7 +53,9 @@ foreach($data_traffic[data] as $key => $value) {
 ?>
         ]);
 
-        var options = {};
+        var options = {
+			legend: { position: "none" }
+		};
 
         var chart = new google.visualization.AreaChart(document.getElementById('new_visitors_div'));
         chart.draw(data, options);
