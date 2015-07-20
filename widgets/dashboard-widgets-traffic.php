@@ -33,14 +33,17 @@ echo '["'.$data.'", '.$json_data[$key][visits].'],';
         ]);
 
         var options = {
-			legend: { position: "none" }
+			'chartArea': {'width': '100%', 'height': '100%'},
+			legend: { position: "none" },
+			hAxis: { textPosition: 'none' },
+			vAxis: { textPosition: 'none' }
 		};
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
     </script>
-    <div id="chart_div" style="width: 100%; height: 150px;"></div><hr>
+    <div id="chart_div" style="height: 100px;"></div><hr>
 <?php	
 	
 	echo '<table width=100%>
