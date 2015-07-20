@@ -14,7 +14,7 @@ function dl_yandex_metrika_menu(){
 	add_menu_page( 
 		'DL Yandex Metrika',
 		'DL Metrika',
-		'administrator',
+		7,
 		'dl_metrika_start',
 		'',
 		'dashicons-chart-area');
@@ -22,7 +22,7 @@ function dl_yandex_metrika_menu(){
 	add_submenu_page('dl_metrika_start', 
 		'Сводка', 
 		'Сводка', 
-		'administrator', 
+		7, 
 		'dl_metrika_start', 
 		'dl_yandex_metrika_start');
 		
@@ -30,35 +30,35 @@ function dl_yandex_metrika_menu(){
 		add_submenu_page('dl_metrika_start', 
 			'Посещаемость', 
 			'Посещаемость', 
-			'administrator', 
+			7, 
 			'dl_metrika_traffic', 
 			'dl_yandex_metrika_traffic');
 			
 		add_submenu_page('dl_metrika_start', 
 			'География', 
 			'География', 
-			'administrator', 
+			7, 
 			'dl_metrika_geo', 
 			'dl_yandex_metrika_geo');
 
 		add_submenu_page('dl_metrika_start', 
 			'Демография', 
 			'Демография', 
-			'administrator', 
+			7, 
 			'dl_metrika_demography', 
 			'dl_yandex_metrika_demography');
 
 		add_submenu_page('dl_metrika_start', 
 			'Поведение на сайте', 
 			'Поведение на сайте', 
-			'administrator', 
+			7, 
 			'dl_metrika_inpage', 
 			'dl_yandex_metrika_inpage');	
 		
 		add_submenu_page('dl_metrika_start', 
 			'Настройки', 
 			'Настройки', 
-			'administrator', 
+			8, 
 			'dl_metrika_settings', 
 			'dl_yandex_metrika_settings');	
 	}	
