@@ -62,7 +62,7 @@ function dl_yandex_metrika_start() {
 	if(get_option('dl_yandex_metrika_id') == '') {
 		include 'page-install.php'; 
 	} else {
-		include 'page-start.php';
+		include 'page-dashboard.php';
 	}
 }
 
