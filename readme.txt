@@ -4,7 +4,7 @@ Plugin URI: http://vcad.dd-l.name/wp-plugins/
 Tags: dl, yandex, metrika, yandex metrika, seo
 Requires at least: 3.2
 Tested up to: 4.2.2
-Stable tag: 0.2.1
+Stable tag: 0.2.3
 
 Яндекс.Метрика для вашей консоли WordPress
 
@@ -23,6 +23,10 @@ Stable tag: 0.2.1
 3. Активируйте плагин в разделе плагины в панели администрирования WordPress
 
 == Changelog ==
+= 0.2.3 =
+* add page inpage
+* bug fixes
+
 = 0.2.2 =
 * add dashboard widgets traffic
 * add dashboard widgets geo
