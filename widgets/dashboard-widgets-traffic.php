@@ -24,7 +24,7 @@ function traffic_dashboard_widget_function() {
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          [' ', ' '],
+          ['Дата', 'Просмотры'],
 <?php
 foreach($json_data as $key => $value) { 
 $data = date('m.d',strtotime($json_data[$key][date]));
