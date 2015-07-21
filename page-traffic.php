@@ -1,11 +1,37 @@
 <?php
 $dl_metrika_id = get_option('dl_yandex_metrika_id');
 $dl_token = get_option('dl_yandex_metrika_token');
-$date = date('Ymd',strtotime("-1 month"));
 
-$url = 'https://api-metrika.yandex.ru/stat/traffic/summary.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date;
+
+$date1 = $_GET['date'];
+
+if($date1 == 'week') {		// если неделя
+	$date1 = date('Ymd',strtotime("-7 day"));
+} elseif($date1 == 'month') {	// если месяц
+	$date1 = date('Ymd',strtotime("-1 month"));
+} elseif($date1 == 'quart') {	// если квартал
+	$date1 = date('Ymd',strtotime("-3 month"));
+} elseif($date1 == 'year') {	// если год
+	$date1 = date('Ymd',strtotime("-12 month"));
+} else {
+	$date1 = date('Ymd',strtotime("-7 day"));
+}
+
+/*$group = $_GET['group'];
+if($group == 'day'){
+	$group = 'day'
+} elseif($group == 'week') {
+	$group = 'week';
+} elseif($group == 'month') {
+	$group = 'month';
+} else {
+	$group = 'month';
+}*/
+
+
+$url = 'https://api-metrika.yandex.ru/stat/traffic/summary.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1;
 $json_data = file_get_contents($url);
-$json_data = json_decode($json_data, true);
+$json_data = json_decode($json_data, true); 
 ?>
 <div class="wrap">
 <h2>Отчет Посещаемость <a href="https://metrika.yandex.ru/stat/traffic?id=<?php echo $dl_metrika_id; ?>" target="_blank" style="float: right" class="button">Отчет на Yandex.Metrika</a></h2>
@@ -31,7 +57,7 @@ foreach($json_data[data] as $key => $value) {
 
          var options = {
           chart: {
-            title: 'Данные о посещаемости сайта за месяц'
+            title: 'Данные о посещаемости сайта'
           }
         };
 
@@ -43,6 +69,29 @@ foreach($json_data[data] as $key => $value) {
 	
 
 <div class="wrap">
+<div class="wp-filter" style="margin: 0;">
+	<ul class="filter-links">
+		<!--<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=year" 
+			<?php if($_GET['date'] == 'year') echo 'class="current"' ?>>Год</a>
+			</li>-->
+		<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=quart" 
+			<?php if($_GET['date'] == 'quart') echo 'class="current"' ?>>Квартал</a>
+			</li>
+		<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=month" 
+			<?php if($_GET['date'] == 'month') echo 'class="current"' ?>>Месяц</a>
+			</li>
+		<li style="border-right: 1px solid #e5e5e5;">
+			<a href="admin.php?page=dl_metrika_traffic&date=week" 
+			<?php if($_GET['date'] == '') echo 'class="current"';
+			if($_GET['date'] == 'week') echo 'class="current"';
+			?>>Неделя</a>
+			</li>
+	</ul>
+</div>
+
     <div class="postbox-container" style="width: 100%">
         <div class="metabox-holder">
             <div class="meta-box-sortables">
