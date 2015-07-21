@@ -151,16 +151,24 @@ foreach($json_data as $key => $value) {
 
 <br>
 
-				<?php if(get_option('dl_yandex_metrika_developer') <> '') { ?>
-				<div class="postbox" id="second">
-                    <h3 class="hndle" style="cursor: default">Массив данных</h3>
-                    <div class="inside">
-						<?php if(get_option('dl_yandex_metrika_developer_url') <> '') { ?>
-						<a href="<?php echo $url.'&pretty=1'; ?>" target="_blank"><?php echo $url; ?></a><?php } ?>						
-                        <pre><?php print_r($json_data); ?></pre>
-                    </div>
-                </div>
-				<?php } ?>
+	<?php if(get_option('dl_yandex_metrika_developer_url') <> '') { ?>
+	<div class="postbox" id="second">
+		<h3 class="hndle" style="cursor: default">URL json</h3>
+		<div class="inside">
+			<?php if(get_option('dl_yandex_metrika_developer_url') <> '') { ?>
+			<a href="<?php echo $url.'&pretty=1'; ?>" target="_blank"><?php echo $url; ?></a><?php } ?>
+		</div>
+	</div>
+	<?php } ?>	
+	
+	<?php if(get_option('dl_yandex_metrika_developer') <> '') { ?>
+	<div class="postbox" id="second">
+		<h3 class="hndle" style="cursor: default">Массив данных</h3>
+		<div class="inside">
+			<pre><?php print_r($json_data); ?></pre>
+		</div>
+	</div>
+	<?php } ?>
 				
             </div>
         </div>
