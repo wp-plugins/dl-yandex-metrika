@@ -4,7 +4,6 @@ $dl_token = get_option('dl_yandex_metrika_token');
 
 
 $date1 = $_GET['date'];
-
 if($date1 == 'week') {		// если неделя
 	$date1 = date('Ymd',strtotime("-7 day"));
 } elseif($date1 == 'month') {	// если месяц
@@ -17,19 +16,20 @@ if($date1 == 'week') {		// если неделя
 	$date1 = date('Ymd',strtotime("-7 day"));
 }
 
-/*$group = $_GET['group'];
+
+$group = $_GET['group'];
 if($group == 'day'){
-	$group = 'day'
+	$group = 'day';
 } elseif($group == 'week') {
 	$group = 'week';
 } elseif($group == 'month') {
 	$group = 'month';
 } else {
-	$group = 'month';
-}*/
+	$group = 'day';
+}
 
 
-$url = 'https://api-metrika.yandex.ru/stat/traffic/summary.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1;
+$url = 'https://api-metrika.yandex.ru/stat/traffic/summary.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1.'&group='.$group;
 $json_data = file_get_contents($url);
 $json_data = json_decode($json_data, true); 
 ?>
@@ -71,24 +71,38 @@ foreach($json_data[data] as $key => $value) {
 <div class="wrap">
 <div class="wp-filter" style="margin: 0;">
 	<ul class="filter-links">
+		<li>Показать</li>
 		<!--<li>
 			<a href="admin.php?page=dl_metrika_traffic&date=year" 
 			<?php if($_GET['date'] == 'year') echo 'class="current"' ?>>Год</a>
 			</li>-->
 		<li>
-			<a href="admin.php?page=dl_metrika_traffic&date=quart" 
-			<?php if($_GET['date'] == 'quart') echo 'class="current"' ?>>Квартал</a>
+			<a href="admin.php?page=dl_metrika_traffic&date=quart&group=<? echo $group;?>" 
+			<? if($_GET['date'] == 'quart') echo 'class="current"' ?>>квартал</a>
 			</li>
 		<li>
-			<a href="admin.php?page=dl_metrika_traffic&date=month" 
-			<?php if($_GET['date'] == 'month') echo 'class="current"' ?>>Месяц</a>
+			<a href="admin.php?page=dl_metrika_traffic&date=month&group=<? echo $group; ?>" 
+			<? if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
 			</li>
 		<li style="border-right: 1px solid #e5e5e5;">
-			<a href="admin.php?page=dl_metrika_traffic&date=week" 
-			<?php if($_GET['date'] == '') echo 'class="current"';
-			if($_GET['date'] == 'week') echo 'class="current"';
-			?>>Неделя</a>
+			<a href="admin.php?page=dl_metrika_traffic&date=week&group=<? echo $group; ?>" 
+			<? if($_GET['date'] == '') echo 'class="current"';
+			   if($_GET['date'] == 'week') echo 'class="current"';
+			?>>неделя</a>
 			</li>
+		
+		<li style="margin: 0 10px;">Группировать</li>	
+		<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=<? echo $_GET['date'] ?>&group=day" <? 
+			if($_GET['group'] == '') echo 'class="current"';
+			if($_GET['group'] == 'day') echo 'class="current"';?>>по дням</a>
+			</li>
+		<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=<? echo $_GET['date'] ?>&group=week" <? if($_GET['group'] == 'week') echo 'class="current"';?>>по неделям</a>
+			</li>	
+		<li>
+			<a href="admin.php?page=dl_metrika_traffic&date=<? echo $_GET['date'] ?>&group=month" <? if($_GET['group'] == 'month') echo 'class="current"';?>>по месяцам</a>
+			</li>	
 	</ul>
 </div>
 
