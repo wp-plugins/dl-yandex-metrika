@@ -27,13 +27,13 @@ function traffic_dashboard_widget_function() {
           ['Дата', 'Просмотры'],
 <?php
 foreach($json_data as $key => $value) { 
-$data = date('m.d',strtotime($json_data[$key][date]));
+$data = date('m.d.y',strtotime($json_data[$key][date]));
 echo '["'.$data.'", '.$json_data[$key][visits].'],';
 } ?>
         ]);
 
         var options = {
-			'chartArea': {'width': '100%', 'height': '100%'},
+			'chartArea': {'width': '100%', 'height': '90%'},
 			legend: { position: "none" },
 			hAxis: { textPosition: 'none' },
 			vAxis: { textPosition: 'none' }
@@ -43,27 +43,30 @@ echo '["'.$data.'", '.$json_data[$key][visits].'],';
         chart.draw(data, options);
       }
     </script>
-    <div id="chart_div" style="height: 100px;"></div><hr>
+    <div id="chart_div" style="height: 100px;"></div>
+	
 <?php	
 	
-	echo '<table width=100%>
+	echo '<table class="wp-list-table widefat fixed striped posts">
+		<thead>
 		<tr align="center">
-			<td align="left">Дата</td>
-			<td>Визиты</td>
-			<td>Просмотры</td>
-			<td>Посетители</td>
+			<th align="left">Дата</td>
+			<th>Визиты</td>
+			<th>Просмотры</td>
+			<th>Посетители</td>
 		</tr>
+		</thead>
 		<tr>
 			<td>Сегодня</td>
-			<td align="center">'.$json_data[0][visits].'</td>
-			<td align="center">'.$json_data[0][page_views].'</td>
-			<td align="center">'.$json_data[0][visitors].'</td>
+			<td>'.$json_data[0][visits].'</td>
+			<td>'.$json_data[0][page_views].'</td>
+			<td>'.$json_data[0][visitors].'</td>
 		</tr>
 		<tr>
 			<td>Вчера</td>
-			<td align="center">'.$json_data[1][visits].'</td>
-			<td align="center">'.$json_data[1][page_views].'</td>
-			<td align="center">'.$json_data[1][visitors].'</td>
+			<td>'.$json_data[1][visits].'</td>
+			<td>'.$json_data[1][page_views].'</td>
+			<td>'.$json_data[1][visitors].'</td>
 		</tr>
 		';
 	
@@ -74,9 +77,9 @@ echo '["'.$data.'", '.$json_data[$key][visits].'],';
 		$data = date('Y.m.d',strtotime($json_data[$key][date]));
 		echo '<tr>
 				<td>' .$data. '</td>
-				<td align="center">' .$json_data[$key][visits]. '</td>
-				<td align="center">' .$json_data[$key][page_views]. '</td>
-				<td align="center">' .$json_data[$key][visitors]. '</td>
+				<td>' .$json_data[$key][visits]. '</td>
+				<td>' .$json_data[$key][page_views]. '</td>
+				<td>' .$json_data[$key][visitors]. '</td>
 			</tr>';
 		}
 	echo '</table>';

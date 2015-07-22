@@ -23,6 +23,9 @@ Stable tag: 0.3
 3. Активируйте плагин в разделе плагины в панели администрирования WordPress
 
 == Changelog ==
+= 0.3.1 =
+* add dashboard widgets demography
+
 = 0.3 =
 * add filter
 * bug fixes
