@@ -13,7 +13,7 @@ if($date1 == 'week') {		// если неделя
 } elseif($date1 == 'year') {	// если год
 	$date1 = date('Ymd',strtotime("-12 month"));
 } else {
-	$date1 = date('Ymd',strtotime("-7 day"));
+	$date1 = date('Ymd',strtotime("-1 month"));
 }
 
 
@@ -44,7 +44,7 @@ $json_data = json_decode($json_data, true);
 <?php
 foreach($json_data[data] as $key => $value) { 
 	
-	$date = date('d.m',strtotime($json_data[data][$key][date]));
+	$date = date('d.m.y',strtotime($json_data[data][$key][date]));
 	$visites = $json_data[data][$key][visits];
 	$page_views = $json_data[data][$key][page_views];
 	$visitors = $json_data[data][$key][visitors];
@@ -82,16 +82,16 @@ foreach($json_data[data] as $key => $value) {
 			</li>
 		<li>
 			<a href="admin.php?page=dl_metrika_traffic&date=month&group=<? echo $group; ?>" 
-			<? if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
+			<? if($_GET['date'] == '') echo 'class="current"';
+			if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
 			</li>
 		<li style="border-right: 1px solid #e5e5e5;">
 			<a href="admin.php?page=dl_metrika_traffic&date=week&group=<? echo $group; ?>" 
-			<? if($_GET['date'] == '') echo 'class="current"';
-			   if($_GET['date'] == 'week') echo 'class="current"';
+			<? if($_GET['date'] == 'week') echo 'class="current"';
 			?>>неделя</a>
 			</li>
 		
-		<li style="margin: 0 10px;">Группировать</li>	
+		<li style="margin: 0 10px;">Детализация</li>	
 		<li>
 			<a href="admin.php?page=dl_metrika_traffic&date=<? echo $_GET['date'] ?>&group=day" <? 
 			if($_GET['group'] == '') echo 'class="current"';

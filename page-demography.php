@@ -2,6 +2,7 @@
 $dl_metrika_id = get_option('dl_yandex_metrika_id');
 $dl_token = get_option('dl_yandex_metrika_token');
 
+
 $date1 = $_GET['date'];
 if($date1 == 'week') {		// если неделя
 	$date1 = date('Ymd',strtotime("-7 day"));
@@ -16,18 +17,7 @@ if($date1 == 'week') {		// если неделя
 }
 
 
-$group = $_GET['group'];
-if($group == 'day'){
-	$group = 'day';
-} elseif($group == 'week') {
-	$group = 'week';
-} elseif($group == 'month') {
-	$group = 'month';
-} else {
-	$group = 'day';
-}
-
-$url = 'https://api-metrika.yandex.ru/stat/demography/age_gender.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1.'&group='.$group;
+$url = 'https://api-metrika.yandex.ru/stat/demography/age_gender.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1;
 $json_data = file_get_contents($url);
 $json_data = json_decode($json_data, true);
 ?>
@@ -103,32 +93,20 @@ foreach($json_data[data] as $key => $value) {
 			<?php if($_GET['date'] == 'year') echo 'class="current"' ?>>Год</a>
 			</li>-->
 		<li>
-			<a href="admin.php?page=dl_metrika_demography&date=quart&group=<? echo $group;?>" 
+			<a href="admin.php?page=dl_metrika_demography&date=quart" 
 			<? if($_GET['date'] == 'quart') echo 'class="current"' ?>>квартал</a>
 			</li>
 		<li>
-			<a href="admin.php?page=dl_metrika_demography&date=month&group=<? echo $group; ?>" 
-			<? if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
+			<a href="admin.php?page=dl_metrika_demography&date=month" 
+			<? if($_GET['date'] == '') echo 'class="current"';
+			   if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
 			</li>
 		<li style="border-right: 1px solid #e5e5e5;">
-			<a href="admin.php?page=dl_metrika_demography&date=week&group=<? echo $group; ?>" 
-			<? if($_GET['date'] == '') echo 'class="current"';
+			<a href="admin.php?page=dl_metrika_demography&date=week" 
+			<? 
 			   if($_GET['date'] == 'week') echo 'class="current"';
 			?>>неделя</a>
 			</li>
-		
-		<li style="margin: 0 10px;">Группировать</li>	
-		<li>
-			<a href="admin.php?page=dl_metrika_demography&date=<? echo $_GET['date'] ?>&group=day" <? 
-			if($_GET['group'] == '') echo 'class="current"';
-			if($_GET['group'] == 'day') echo 'class="current"';?>>по дням</a>
-			</li>
-		<li>
-			<a href="admin.php?page=dl_metrika_demography&date=<? echo $_GET['date'] ?>&group=week" <? if($_GET['group'] == 'week') echo 'class="current"';?>>по неделям</a>
-			</li>	
-		<li>
-			<a href="admin.php?page=dl_metrika_demography&date=<? echo $_GET['date'] ?>&group=month" <? if($_GET['group'] == 'month') echo 'class="current"';?>>по месяцам</a>
-			</li>	
 	</ul>
 </div>
     <div class="postbox-container" style="width: 100%">
