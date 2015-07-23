@@ -16,8 +16,10 @@ if($date1 == 'week') {		// если неделя
 	$date1 = date('Ymd',strtotime("-7 day"));
 }
 
+$date2 = date('Ymd');
 
-$url = 'https://api-metrika.yandex.ru/stat/demography/age_gender.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1;
+
+$url = 'https://api-metrika.yandex.ru/stat/demography/age_gender.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1.'&date2='.$date2;
 $json_data = file_get_contents($url);
 $json_data = json_decode($json_data, true);
 ?>
