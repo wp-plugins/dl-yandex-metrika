@@ -58,11 +58,7 @@ foreach($json_data[data] as $key => $value) {
 
          var options = {
           chart: {
-            title: 'Данные о посещаемости сайта',
-			animation:{
-				duration: 1000,
-				easing: 'out',
-			},
+            title: 'Данные о посещаемости сайта'
           }
         };
 
