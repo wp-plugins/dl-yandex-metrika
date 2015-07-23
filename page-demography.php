@@ -103,7 +103,7 @@ foreach($json_data[data] as $key => $value) {
 			<? if($_GET['date'] == '') echo 'class="current"';
 			   if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
 			</li>
-		<li style="border-right: 1px solid #e5e5e5;">
+		<li>
 			<a href="admin.php?page=dl_metrika_demography&date=week" 
 			<? 
 			   if($_GET['date'] == 'week') echo 'class="current"';
