@@ -17,7 +17,7 @@ if($date1 == 'week') {		// если неделя
 
 $date2 = date('Ymd');
 
-$url = 'https://api-metrika.yandex.ru/stat/tech/os.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1.'&date2='.$date2;
+$url = 'https://api-metrika.yandex.ru/stat/tech/mobile.json?id='.$dl_metrika_id.'&oauth_token='.$dl_token.'&date1='.$date1.'&date2='.$date2;
 $json_data = file_get_contents($url);
 $json_data = json_decode($json_data, true); 
 ?>
@@ -39,7 +39,7 @@ $json_data = json_decode($json_data, true);
         ]);
 
         var options = {
-			title: 'Данные об операционных системах посетителей сайта',
+			title: 'Данные о посетителях, которые обращаются на сайт с мобильных устройств',
 			pieHole: 0.4,  
 			height: 400,
 			'chartArea': {'width': '70%', 'height': '70%'},
@@ -52,23 +52,23 @@ $json_data = json_decode($json_data, true);
 	
 
 <div class="wrap">
-<h2>Отчет Операционные системы <a href="https://metrika.yandex.ru/stat/os?id=<?php echo $dl_metrika_id; ?>" target="_blank" style="float: right" class="button">Отчет на Yandex.Metrika</a></h2>
+<h2>Отчет Операционные системы <a href="https://metrika.yandex.ru/stat/tech_devices?id=<?php echo $dl_metrika_id; ?>" target="_blank" style="float: right" class="button">Отчет на Yandex.Metrika</a></h2>
 
 
 <div class="wp-filter" style="margin: 0;">
 	<ul class="filter-links">
 		<li>Показать</li>
 		<li>
-			<a href="admin.php?page=dl_metrika_os&date=quart" 
+			<a href="admin.php?page=dl_metrika_mobile&date=quart" 
 			<? if($_GET['date'] == 'quart') echo 'class="current"' ?>>квартал</a>
 			</li>
 		<li>
-			<a href="admin.php?page=dl_metrika_os&date=month" 
+			<a href="admin.php?page=dl_metrika_mobile&date=month" 
 			<? if($_GET['date'] == '') echo 'class="current"';
 			if($_GET['date'] == 'month') echo 'class="current"' ?>>месяц</a>
 			</li>
 		<li>
-			<a href="admin.php?page=dl_metrika_os&date=week" 
+			<a href="admin.php?page=dl_metrika_mobile&date=week" 
 			<? if($_GET['date'] == 'week') echo 'class="current"';
 			?>>неделя</a>
 			</li>
