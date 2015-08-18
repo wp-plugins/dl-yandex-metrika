@@ -3,7 +3,7 @@ Contributors: dyadyalesha
 Plugin URI: http://vcad.dd-l.name/wp-plugins/
 Tags: dl, yandex, metrika, yandex metrika, seo
 Requires at least: 3.2
-Tested up to: 4.2.2
+Tested up to: 4.3
 Stable tag: 0.3.4
 
 Яндекс.Метрика для вашей консоли WordPress
@@ -33,6 +33,9 @@ Stable tag: 0.3.4
 4. Страница "Демография"
 
 == Changelog ==
+= 0.3.5 =
+* a more easy registration
+
 = 0.3.4 =
 * add page mobile
 
