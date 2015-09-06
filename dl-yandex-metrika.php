@@ -3,7 +3,7 @@
 Plugin Name: DL Yandex Metrika
 Description: Яндекс.Метрика — это сервис веб-аналитики для оценки эффективности сайтов. Он позволяет анализировать:конверсию и выручку сайта, эффективность рекламы (Яндекс.Директ, Яндекс.Маркет и т. д.), аудиторию сайта и поведение посетителей, источники, привлекающие посетителей. Все инструменты Яндекс.Метрики бесплатны.
 Plugin URI: http://vcard.dd-l.name/wp-plugins/
-Version: 0.3.5
+Version: 0.3.6
 Author: Dyadya Lesha (info@dd-l.name)
 Author URI: http://dd-l.name
 */
@@ -175,3 +175,107 @@ if(get_option('dl_yandex_metrika_id') <> '') {
 	require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-geo.php' );
 	require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-demography.php' );
 }
+
+// добавляем ссылку на панель WordPress
+function dl_yandex_metrika_toolbar($wp_admin_bar) {
+	$args = array(
+		'id' => 'dl_yandex_metrika_toolbar',
+		'title' => 'DL Metrika', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_dashboard', 
+		'meta' => array( 
+		'target' => '_self',
+			'title' => 'DL Metrika',
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	
+	$args = array(
+		'id' => 'dl_metrika_dashboard',
+		'title' => 'Сводка', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_dashboard',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Сводка'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_traffic',
+		'title' => 'Посещаемость', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_traffic',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Посещаемость'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_geo',
+		'title' => 'География', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_geo',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'География'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_demography',
+		'title' => 'Демография', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_demography',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Демография'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_os',
+		'title' => 'Операционные системы', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_os',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Операционные системы'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_mobile',
+		'title' => 'Мобильные устройства', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_mobile',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Мобильные устройства'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_traffic_load',
+		'title' => 'Нагрузка на сайт', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_traffic_load',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Нагрузка на сайт'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage',
+		'title' => 'Поведение на сайте', 
+		'href' => '/wp-admin/admin.php?page=dl_metrika_inpage',
+		'parent' => 'dl_yandex_metrika_toolbar', 
+		'meta' => array( 
+			'title' => 'Поведение на сайте'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+}
+add_action('admin_bar_menu', 'dl_yandex_metrika_toolbar', 99);
