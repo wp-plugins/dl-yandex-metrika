@@ -177,6 +177,7 @@ if(get_option('dl_yandex_metrika_id') <> '') {
 }
 
 // добавляем ссылку на панель WordPress
+// добавляем ссылку на панель WordPress
 function dl_yandex_metrika_toolbar($wp_admin_bar) {
 	$args = array(
 		'id' => 'dl_yandex_metrika_toolbar',
@@ -274,6 +275,66 @@ function dl_yandex_metrika_toolbar($wp_admin_bar) {
 		'parent' => 'dl_yandex_metrika_toolbar', 
 		'meta' => array( 
 			'title' => 'Поведение на сайте'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage_visor',
+		'title' => 'Вебвизор', 
+		'href' => 'https://metrika.yandex.ru/stat/visor?id='.get_option('dl_yandex_metrika_id'),
+		'parent' => 'dl_metrika_inpage', 
+		'meta' => array( 
+			'target' => '_blank',
+			'title' => 'Вебвизор'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage_link_map',
+		'title' => 'Карта ссылок', 
+		'href' => 'http://inpage.metrika.yandex.ru/inpage/link_map?id='.get_option('dl_yandex_metrika_id'),
+		'parent' => 'dl_metrika_inpage', 
+		'meta' => array( 
+			'target' => '_blank',
+			'title' => 'Карта ссылок'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage_click_map',
+		'title' => 'Карта кликов', 
+		'href' => 'http://inpage.metrika.yandex.ru/inpage/click_map?id='.get_option('dl_yandex_metrika_id'),
+		'parent' => 'dl_metrika_inpage', 
+		'meta' => array( 
+			'target' => '_blank',
+			'title' => 'Карта кликов'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage_scroll_map',
+		'title' => 'Карта скроллинга', 
+		'href' => 'http://inpage.metrika.yandex.ru/inpage/scroll_map?id='.get_option('dl_yandex_metrika_id'),
+		'parent' => 'dl_metrika_inpage', 
+		'meta' => array( 
+			'target' => '_blank',
+			'title' => 'Карта скроллинга'
+			)
+	);
+	$wp_admin_bar->add_node($args);
+	
+	$args = array(
+		'id' => 'dl_metrika_inpage_form_analysis',
+		'title' => 'Аналитика форм', 
+		'href' => 'http://inpage.metrika.yandex.ru/inpage/form_analysis?id='.get_option('dl_yandex_metrika_id'),
+		'parent' => 'dl_metrika_inpage', 
+		'meta' => array( 
+			'target' => '_blank',
+			'title' => 'Аналитика форм'
 			)
 	);
 	$wp_admin_bar->add_node($args);
