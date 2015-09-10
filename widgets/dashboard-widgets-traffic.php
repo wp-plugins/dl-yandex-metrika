@@ -17,6 +17,8 @@ function traffic_dashboard_widget_function() {
 	$json_data = file_get_contents($url);
 	$json_data = json_decode($json_data, true);
 	
+	$json_data_cgart = $json_data[data];
+	
 	$json_data = array_reverse($json_data[data]);
 ?>
 <script type="text/javascript">
