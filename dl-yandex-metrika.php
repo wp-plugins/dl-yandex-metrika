@@ -3,7 +3,7 @@
 Plugin Name: DL Yandex Metrika
 Description: Яндекс.Метрика — это сервис веб-аналитики для оценки эффективности сайтов. Он позволяет анализировать:конверсию и выручку сайта, эффективность рекламы (Яндекс.Директ, Яндекс.Маркет и т. д.), аудиторию сайта и поведение посетителей, источники, привлекающие посетителей. Все инструменты Яндекс.Метрики бесплатны.
 Plugin URI: http://vcard.dd-l.name/wp-plugins/
-Version: 0.3.6.1
+Version: 0.3.6.2
 Author: Dyadya Lesha (info@dd-l.name)
 Author URI: http://dd-l.name
 */
@@ -17,7 +17,8 @@ function dl_yandex_metrika_menu(){
 		7,
 		'dl_metrika_dashboard',
 		'',
-		'dashicons-chart-area');
+		'dashicons-chart-area',
+		3);
 
 	add_submenu_page('dl_metrika_dashboard', 
 		'Сводка', 
@@ -176,7 +177,6 @@ if(get_option('dl_yandex_metrika_id') <> '') {
 	require_once( plugin_dir_path( __FILE__ ) . 'widgets/dashboard-widgets-demography.php' );
 }
 
-// добавляем ссылку на панель WordPress
 // добавляем ссылку на панель WordPress
 function dl_yandex_metrika_toolbar($wp_admin_bar) {
 	$args = array(

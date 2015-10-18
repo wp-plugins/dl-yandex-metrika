@@ -28,9 +28,9 @@ function traffic_dashboard_widget_function() {
         var data = google.visualization.arrayToDataTable([
           ['Дата', 'Просмотры'],
 <?php
-foreach($json_data as $key => $value) { 
-$data = date('m.d.y',strtotime($json_data[$key][date]));
-echo '["'.$data.'", '.$json_data[$key][visits].'],';
+foreach($json_data_cgart as $key => $value) { 
+$data = date('d.m.y',strtotime($json_data_cgart[$key][date]));
+echo '["'.$data.'", '.$json_data_cgart[$key][visits].'],';
 } ?>
         ]);
 
